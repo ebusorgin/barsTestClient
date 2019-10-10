@@ -1,0 +1,10 @@
+.active{
+  background-color: #9cdeff;
+}
+button {
+  margin: 10px;
+}
+input{
+  display: block;
+  margin: 5px;
+}

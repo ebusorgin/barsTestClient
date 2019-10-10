@@ -1,0 +1,23 @@
+<div>
+  <button class="btnType" (click)="type='login'" [ngClass]="{'active':type=='login'}">
+    Login
+  </button>
+  <button class="btnType" (click)="type='register'"  [ngClass]="{'active':type=='register'}">
+    Register
+  </button>
+  <hr>
+  <div *ngIf="type=='login'">
+    <h3>form Login</h3>
+    <input placeholder="login" [(ngModel)]="auth.login">
+    <input placeholder="password" [(ngModel)]="auth.password">
+    <button (click)="login()">Login</button>
+  </div>
+  <div *ngIf="type=='register'">
+    <h3>form Register</h3>
+    <input placeholder="name" [(ngModel)]="reg.name">
+    <input placeholder="login" [(ngModel)]="reg.login">
+    <input placeholder="password" [(ngModel)]="reg.password">
+    <input placeholder="re-password" [(ngModel)]="reg.repassword">
+    <button (click)="register()">Register</button>
+  </div>
+</div>

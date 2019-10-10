@@ -1,0 +1,58 @@
+<button style="background: black;color: white" (click)="authService.logout()">
+  logout
+</button>
+<hr>
+<button [ngClass]="{'active':type==0}" (click)="type=0">
+  my docs
+</button>
+<button [ngClass]="{'active':type==1}"(click)="type=1">
+  other docs
+</button>
+<hr>
+<div *ngIf="type==0">
+  <h3>My Documents</h3>
+  <div style="margin: 50px;background-color: #bfb6b8;width: 300px;height: 100px">
+
+    <input type="file" class="form-control" name="single" ng2FileSelect [uploader]="uploader" />
+    <input type="text" [(ngModel)]="textFile">
+    <button type="button" class="btn btn-success btn-s"
+            (click)="uploadAll()" [disabled]="!uploader.getNotUploadedItems().length">
+      <span class="glyphicon glyphicon-upload"></span> Upload all
+    </button><br />
+  </div>
+  <table>
+    <tr>
+      <td>id</td>
+      <td>originalname</td>
+      <td>size</td>
+      <td>created at</td>
+      <td>note</td>
+    </tr>
+    <tr *ngFor="let item of dataService.myfiles">
+      <td>{{item.id}}</td>
+      <td><a href="http://localhost:3030/static/{{item.filename}}" target="_blank">{{item.originalname}} </a></td>
+      <td>{{item.size}}</td>
+      <td>{{item.created_at}}</td>
+      <td>{{item.note}}</td>
+    </tr>
+  </table>
+</div>
+<div *ngIf="type==1">
+  <h3>Other Documents</h3>
+  <table>
+    <tr>
+      <td>id</td>
+      <td>originalname</td>
+      <td>size</td>
+      <td>created at</td>
+      <td>note</td>
+    </tr>
+    <tr *ngFor="let item of dataService.allfiles">
+      <td>{{item.id}}</td>
+      <td><a href="http://localhost:3030/static/{{item.filename}}" target="_blank">{{item.originalname}} </a></td>
+      <td>{{item.size}}</td>
+      <td>{{item.created_at}}</td>
+      <td>{{item.note}}</td>
+    </tr>
+  </table>
+</div>

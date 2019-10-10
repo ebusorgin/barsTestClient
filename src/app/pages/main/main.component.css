@@ -1,0 +1,10 @@
+button {
+  margin: 10px;
+}
+.active{
+  background: #9cdeff;
+}
+table tr td{
+  border: 1px solid #bfb6b8;
+
+}
